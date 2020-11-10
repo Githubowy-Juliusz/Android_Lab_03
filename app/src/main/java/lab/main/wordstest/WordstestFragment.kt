@@ -23,5 +23,26 @@ class WordstestFragment :
 		val resultText =
 			view.findViewById<TextView>(R.id.wordstestResultTextView)
 		val confirmButton = view.findViewById<Button>(R.id.wordstestConfirmButton)
+
+		val wordstest = Wordstest()
+
+		fun updateFields() {
+			pointsText.text = "Points: " + wordstest.points.toString()
+			wordCountText.text = "Word count: " + wordstest.wordCount
+			currentWordText.text = "Current word: " + wordstest.current
+			wordInput.text.clear()
+		}
+		updateFields()
+		resultText.text = ""
+
+		confirmButton.setOnClickListener() {
+			val input = wordInput.text.toString()
+			if(wordstest.check(input))
+				resultText.text = "Correct!"
+			else
+				resultText.text = "Wrong!"
+			wordstest.next()
+			updateFields()
+		}
 	}
 }

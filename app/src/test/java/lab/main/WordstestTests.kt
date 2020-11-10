@@ -1,11 +1,17 @@
 package lab.main
 
-import org.junit.Assert.assertTrue
+import lab.main.wordstest.Wordstest
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotEquals
 import org.junit.Test
 
 class WordstestTests {
 	@Test
 	fun test1() {
-		assertTrue(15 == 15)
+		val wordstest = Wordstest()
+		val tmpCurrent = wordstest.current
+		wordstest.next()
+		assertNotEquals(tmpCurrent, wordstest.current)
+		assertFalse(wordstest.check("qweqjhekqjbqk"))
 	}
 }
